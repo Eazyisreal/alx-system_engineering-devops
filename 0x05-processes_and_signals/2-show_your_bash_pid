@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# display bash PID (without using pgrep bash)
+# A Bash script that displays lines containing the bash word
 # shellcheck disable=SC2009
-# ignore shellcheck suggestion for pgrep
 
-ps -auxf | grep "bash"
+ps aux --forest | grep bash

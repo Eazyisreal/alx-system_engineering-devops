@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
-# Script kills another script running in another terminal (need -f to find pid)
+# A Bash script that stops 4-to_infinity_and_beyond process
 
-kill "$(pgrep -f "4-to_infinity_and_beyond")"
+pids=$( ps eaux | pgrep ./4-to_infinity_and_beyond )
+counter=0
+
+for pid in $pids; do
+	if [ $counter -gt 0 ]; then
+		kill -n 9 "$pid"
+	fi
+	counter=$((counter + 1))
+done
